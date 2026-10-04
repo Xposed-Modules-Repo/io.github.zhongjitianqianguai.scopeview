@@ -1,0 +1,3 @@
+域见：按应用反查 LSPosed 模块作用域，优先查看可用更新，选择 APK 并单个或批量更新模块。支持中英界面；Android 13+，读取作用域和仓库缓存需要 Root。
+
+ScopeView: inspect LSPosed scopes by app and manage module updates, individually or in a batch. Supports Chinese and English. Android 13+; Root is required to read scopes and the Manager repository cache.
