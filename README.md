@@ -36,8 +36,10 @@ Check module updates in one place and update them individually or in a batch.
 - 读取作用域、读取 LSPosed 仓库缓存及直接安装更新需要 Root 授权。<br>
   Root authorization is required to read scopes and the LSPosed repository cache, and to install updates directly.
 
-域见是独立管理工具，不包含 Xposed Hook 入口，无需在 LSPosed 中为域见勾选作用域。<br>
-ScopeView is a standalone management app with no Xposed hook entry point, so it does not need its own scope selection in LSPosed.
+## 作用域 / Scope
+
+域见自身不 Hook 任何应用，无需勾选作用域；它展示的是其他模块为应用配置的作用域。<br>
+ScopeView does not hook apps or require scope selection; it shows the scopes configured by other modules.
 
 ## 开始使用 / Getting started
 
