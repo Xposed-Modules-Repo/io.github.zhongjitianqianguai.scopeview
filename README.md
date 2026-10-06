@@ -38,8 +38,11 @@ Check module updates in one place and update them individually or in a batch.
 
 ## 作用域 / Scope
 
-域见自身不 Hook 任何应用，无需勾选作用域；它展示的是其他模块为应用配置的作用域。<br>
-ScopeView does not hook apps or require scope selection; it shows the scopes configured by other modules.
+仓库作用域声明为 LSPosed 管理器（`org.lsposed.manager`）。<br>
+The repository scope declaration lists LSPosed Manager (`org.lsposed.manager`).
+
+当前版本通过 Root 只读读取管理器数据，不 Hook 应用，无需勾选作用域。<br>
+The current version reads Manager data through Root without hooking apps or requiring scope selection.
 
 ## 开始使用 / Getting started
 
