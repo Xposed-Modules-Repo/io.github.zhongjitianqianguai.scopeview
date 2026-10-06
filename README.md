@@ -6,18 +6,21 @@ See at a glance which LSPosed modules target an app, without opening them one by
 集中查看模块更新，支持单个更新和批量更新。<br>
 Check module updates in one place and update them individually or in a batch.
 
-[项目仓库 / Repository](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview) · [发布版本 / Releases](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview/releases)
+域见是独立的 Root 配套工具，无需激活 LSPosed 模块也可使用原有功能。<br>
+ScopeView is a standalone Root companion utility; its existing features work without activating the LSPosed module.
+
+[公开下载 / Downloads](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview/releases) · [官方索引 / Official index](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview)
 
 ## 主要功能 / Features
 
 - **按应用查看模块**：查看一个应用被哪些模块选入作用域，显示应用名称、包名、图标及 Android 用户信息。<br>
   **Modules by app:** See which modules include an app in their scopes, with app names, package names, icons and Android user information.
-- **查看模块更新**：读取 LSPosed 管理器的本机仓库缓存，显示缓存时间、更新标记和可更新数量。<br>
-  **Check module updates:** Read the LSPosed Manager's local repository cache and show its timestamp, update indicators and available update count.
+- **查看模块更新**：读取 LSPosed 管理器的仓库缓存，跟随其更新通道，显示缓存时间并识别仅名称变化的版本更新。<br>
+  **Check module updates:** Read the LSPosed Manager's repository cache, follow its selected channel, show the cache timestamp and recognize updates that only change the version name.
 - **优先显示更新**：有更新的模块始终排在前面，各组内保留你选择的排序规则。<br>
   **Updates first:** Modules with available updates always appear first, with your chosen sort order preserved within each group.
-- **单个或批量更新**：支持更新单个模块或“更新全部”，遇到多个 APK 时由你逐项选择或跳过。<br>
-  **Individual or batch updates:** Update one module or use Update all, choosing or skipping each release that offers multiple APKs.
+- **单个或批量更新**：支持更新单个模块或“更新全部”；Beta、Nightly 和多 APK 项目由你逐项选择或跳过，没有 APK 的更新需你确认跳过。<br>
+  **Individual or batch updates:** Update one module or use Update all; choose or skip each Beta, Nightly, or multi-APK item, and explicitly skip updates with no APK.
 - **取消剩余任务**：等待当前更新完成，再停止后续更新。<br>
   **Cancel remaining updates:** Let the current update finish, then stop the remaining items.
 - **搜索与排序**：按名称或包名搜索，为应用、模块和作用域详情分别保存排序规则。<br>
@@ -38,11 +41,11 @@ Check module updates in one place and update them individually or in a batch.
 
 ## 作用域 / Scope
 
-仓库作用域声明为 LSPosed 管理器（`org.lsposed.manager`）。<br>
-The repository scope declaration lists LSPosed Manager (`org.lsposed.manager`).
+作用域仅声明域见自身（`io.github.zhongjitianqianguai.scopeview`），无需勾选其他应用。<br>
+The scope declaration only lists ScopeView itself (`io.github.zhongjitianqianguai.scopeview`); no other apps need to be selected.
 
-当前版本通过 Root 只读读取管理器数据，不 Hook 应用，无需勾选作用域。<br>
-The current version reads Manager data through Root without hooking apps or requiring scope selection.
+Xposed 入口仅在域见主进程加载时写一条框架日志，不拦截应用行为；读取配置和更新模块仍通过 Root 完成，无需激活该模块。<br>
+The Xposed entry only writes a framework log when ScopeView's main process loads and does not intercept app behavior; configuration reads and module updates still use Root and do not require module activation.
 
 ## 开始使用 / Getting started
 
@@ -62,8 +65,8 @@ The current version reads Manager data through Root without hooking apps or requ
 域见只读显示作用域，不修改 LSPosed 配置。<br>
 ScopeView displays scopes without modifying the LSPosed configuration.
 
-更新必须由你主动发起，多 APK 版本不会自动选择变体。<br>
-Updates require your explicit action, and APK variants are never selected automatically.
+更新必须由你主动发起；Beta、Nightly 和多 APK 版本需要你选择，稳定版单 APK 可加入更新队列。<br>
+Updates require your explicit action; choose Beta, Nightly and multi-APK releases, while a stable release with one APK can enter the update queue automatically.
 
 安装前会核验包名与版本，并保留 Android 的签名和兼容性检查。<br>
 Package names and versions are verified before installation, while Android retains its signature and compatibility checks.
@@ -76,3 +79,11 @@ Scope records retain Android user IDs, while app names and installation status a
 
 Android 的同包 APK 由多个用户共享，因此更新模块也会更新其他已安装该模块的用户所使用的程序代码。<br>
 Android shares package code across users, so updating a module also updates the code used by other users who have that package installed.
+
+## 测试版迁移 / Migrating from test builds
+
+正式版使用专用签名，无法直接覆盖此前本地安装的调试版。<br>
+The release uses a dedicated signing key and cannot directly replace a locally installed debug build.
+
+卸载调试版会删除其应用数据，迁移前请保留需要的本地设置。<br>
+Uninstalling the debug build removes its app data; preserve any local settings you need before migrating.

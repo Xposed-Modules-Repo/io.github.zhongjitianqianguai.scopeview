@@ -3,3 +3,6 @@ See at a glance which LSPosed modules target an app, without opening them one by
 
 集中查看模块更新，支持单个更新和批量更新。
 Check module updates in one place and update them individually or in a batch.
+
+域见声明为自身的 LSPosed 模块，核心功能不依赖模块激活。
+ScopeView declares itself as an LSPosed module; core features do not depend on module activation.
