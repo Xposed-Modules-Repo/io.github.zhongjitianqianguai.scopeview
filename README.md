@@ -1,5 +1,8 @@
 # 域见 ScopeView
 
+每次更新 LSP 模块都要一个个点进去下载，根本不清楚有多少模块同时作用于某个应用？我来帮你。<br>
+Updating LSP modules means opening each one to download, with no clear view of how many modules target the same app? I'm here to help.
+
 一眼看清哪些 LSPosed 模块作用于某个应用，不用再逐个点开查找。<br>
 See at a glance which LSPosed modules target an app, without opening them one by one.
 
@@ -8,6 +11,17 @@ Check module updates in one place and update them individually or in a batch.
 
 域见是独立的 Root 配套工具，无需激活 LSPosed 模块也可使用原有功能。<br>
 ScopeView is a standalone Root companion utility; its existing features work without activating the LSPosed module.
+
+<p align="center">
+  <a href="https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview/stargazers"><img src="https://img.shields.io/github/stars/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview?style=for-the-badge&logo=github&label=Star" alt="GitHub Stars"></a>
+  <a href="https://t.me/ScopeView_Offical"><img src="https://img.shields.io/badge/Telegram-Official_Group-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram Official Group"></a>
+  <a href="https://t.me/zhongjitianqianguai3"><img src="https://img.shields.io/badge/Telegram-Release_Channel-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram Release Channel"></a>
+</p>
+
+<p align="center">
+如果域见对你有帮助，欢迎点一个 Star 支持项目 ⭐<br>
+If ScopeView helps you, please consider leaving a Star.
+</p>
 
 [公开下载 / Downloads](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview/releases) · [官方索引 / Official index](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview)
 
