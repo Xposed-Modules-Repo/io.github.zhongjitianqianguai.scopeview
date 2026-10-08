@@ -100,3 +100,21 @@ Package names and versions are verified before installation, while Android retai
 
 Root 安装失败时，可将已验证的 APK 交给系统安装器。<br>
 If Root installation fails, the verified APK can be handed to the system installer.
+
+## 本次更新 / What's new in 0.0.3
+
+- 新增模块更新日志展开与收起，支持 Markdown 显示；官方模块按需读取日志，自定义来源保留发布说明。<br>
+  Expand or collapse module changelogs with Markdown rendering; official notes load on demand and custom sources retain release descriptions.
+- 补充 LSPosed 寄生管理器和秘密代码备用入口，保留独立管理器跳转；备用入口打开首页时会给出提示。<br>
+  Add parasitic-manager and secret-code fallback routes while retaining standalone-manager navigation, with a notice when a fallback opens the home page.
+- 在设置的“日志与诊断”中导出并分享诊断日志，记录管理器打开、读取、下载、安装等关键步骤。<br>
+  Export and share diagnostic logs from Logs and diagnostics in Settings, including key manager, read, download and installation steps.
+- 增加帧耗时、长帧、布局与绘制、界面任务墙钟/CPU 耗时及内存信息，方便排查卡顿。<br>
+  Add frame timing, slow-frame, layout and draw, UI task wall/CPU timing, and memory information to help investigate lag.
+- 整理设置页面，加入官方交流群、发布频道和项目 Star 入口，更新返回箭头；日志导出使用明确的文字按钮。<br>
+  Organize Settings with the official group, release channel and project Star links, update the back arrow, and use a clearly labeled log-export button.
+- 调整长截图相关布局：标题栏下全部内容统一滚动，详情与设置共用外层 ScrollView；分别保存页面位置并复用未变化的卡片。<br>
+  Adjust the layout for scrolling screenshots: all content below the toolbar scrolls together, details and Settings share the outer ScrollView, and page positions and unchanged cards are retained.
+
+项目地址：[域见 ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview)，欢迎点一个 Star 支持项目 ⭐<br>
+Project: [ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview). Please consider leaving a Star if it helps you.
