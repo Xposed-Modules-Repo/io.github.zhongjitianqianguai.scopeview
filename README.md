@@ -118,3 +118,12 @@ If Root installation fails, the verified APK can be handed to the system install
 
 项目地址：[域见 ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview)，欢迎点一个 Star 支持项目 ⭐<br>
 Project: [ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview). Please consider leaving a Star if it helps you.
+
+## 本次更新 / What's new in 0.0.4
+
+- 修复寄生管理器模式读取 LSP 仓库缓存时提示“未找到仓库缓存”的问题，补充当前用户的宿主缓存路径，保留独立管理器支持。<br>
+  Fix repository-cache lookup in parasitic-manager mode by adding the current user's host cache path while retaining standalone-manager support.
+- 独立与寄生缓存都存在时，读取更新较新的一份，并使用同一来源的更新通道，保留 Stable、Beta 和 Nightly 行为。<br>
+  When both caches exist, read the newer one and its matching update channel, preserving Stable, Beta and Nightly behavior.
+- 增加缓存探测与选择日志，记录来源、时间和通道，方便排查读取问题；管理器文件保持只读。<br>
+  Add cache-probe and selection logs with the source, timestamp and channel to help diagnose read issues; Manager files remain read-only.
