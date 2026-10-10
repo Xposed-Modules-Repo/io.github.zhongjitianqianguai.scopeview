@@ -127,3 +127,12 @@ Project: [ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitia
   When both caches exist, read the newer one and its matching update channel, preserving Stable, Beta and Nightly behavior.
 - 增加缓存探测与选择日志，记录来源、时间和通道，方便排查读取问题；管理器文件保持只读。<br>
   Add cache-probe and selection logs with the source, timestamp and channel to help diagnose read issues; Manager files remain read-only.
+
+## 本次更新 / What's new in 0.0.5
+
+- 直接隐藏当前用户未安装或未识别的模块配置，以及仅关联这些记录的应用；数量和排序只统计已安装模块，不修改 LSPosed 原配置。<br>
+  Hide configuration records for modules not installed or recognized for the current user, and apps linked only to those records; counts and sorting use installed modules without changing LSPosed configuration.
+- 优化域见自身更新：批量任务最后处理域见，安装前保存目标版本和此前结果，重新打开后核对实际版本并恢复结果，避免进程替换丢失记录。<br>
+  Improve ScopeView self-updates: process ScopeView last in a batch, save the target version and earlier results before installation, and verify the installed version and restore results when reopened.
+- 自身更新取消、失败或尚未确认时不误报成功，保留有效安装包供手动重试；Root 和系统安装入口继续可用，不自动重复旧任务。<br>
+  Do not report cancelled, failed or unconfirmed self-updates as successful; retain valid APKs for manual retry, keep Root and system-installer routes, and avoid automatically repeating old tasks.
