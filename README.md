@@ -42,8 +42,8 @@
 
 - **按应用查看模块**：查看一个应用被哪些模块选入作用域，显示应用名称、包名、图标及 Android 用户信息。<br>
   **Modules by app:** See which modules include an app in their scopes, with app names, package names, icons and Android user information.
-- **查看模块更新**：读取 LSPosed 管理器的仓库缓存，跟随其更新通道，显示缓存时间并识别仅名称变化的版本更新。<br>
-  **Check module updates:** Read the LSPosed Manager's repository cache, follow its selected channel, show the cache timestamp and recognize updates that only change the version name.
+- **查看模块更新**：每次刷新读取完整官方目录，优先跟随 LSPosed 管理器通道；联网失败时显示可用缓存，并识别仅名称变化的版本更新。<br>
+  **Check module updates:** Refresh the full official catalog, follow LSPosed Manager's selected channel, show available cached results when the network fails, and recognize version-name-only updates.
 - **优先显示更新**：有更新的模块始终排在前面，各组内保留你选择的排序规则。<br>
   **Updates first:** Modules with available updates always appear first, with your chosen sort order preserved within each group.
 - **单个或批量更新**：支持更新单个模块或“更新全部”；Beta、Nightly 和多 APK 项目由你逐项选择或跳过，没有 APK 的更新需你确认跳过。<br>
@@ -63,8 +63,8 @@
   Android 13 or later.
 - 使用 LSPosed，并允许域见读取已安装应用列表。<br>
   Use LSPosed and allow ScopeView to access the installed app list.
-- 读取作用域、读取 LSPosed 仓库缓存及直接安装更新需要 Root 授权。<br>
-  Root authorization is required to read scopes and the LSPosed repository cache, and to install updates directly.
+- 读取作用域、读取 LSPosed 本机仓库缓存及直接安装更新需要 Root 授权；更新目录也会从官方公开源刷新。<br>
+  Root authorization is required to read scopes and LSPosed's local repository cache and to install updates directly; the catalog also refreshes from the public official source.
 
 ## 作用域 / Scope
 
@@ -84,8 +84,8 @@ The Xposed entry only writes a framework log when ScopeView's main process loads
    After the first successful read, scope data refreshes when ScopeView opens or returns to the foreground.
 4. 切换到模块更新列表，选择单个更新或“更新全部”。<br>
    Switch to the module update list to update one module or use Update all.
-5. 仓库信息较旧时，先在 LSPosed 管理器中刷新仓库，再回到域见刷新。<br>
-   If the repository data is outdated, refresh it in LSPosed Manager, then refresh ScopeView.
+5. 点击“刷新更新”获取官方目录；应用会沿用 LSPosed 管理器的通道，并在联网失败时显示可用缓存。<br>
+   Tap Refresh updates to fetch the official catalog; ScopeView follows LSPosed Manager's channel and shows usable cached results if the request fails.
 
 ## 使用说明 / Usage notes
 
@@ -136,3 +136,12 @@ Project: [ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitia
   Improve ScopeView self-updates: process ScopeView last in a batch, save the target version and earlier results before installation, and verify the installed version and restore results when reopened.
 - 自身更新取消、失败或尚未确认时不误报成功，保留有效安装包供手动重试；Root 和系统安装入口继续可用，不自动重复旧任务。<br>
   Do not report cancelled, failed or unconfirmed self-updates as successful; retain valid APKs for manual retry, keep Root and system-installer routes, and avoid automatically repeating old tasks.
+
+## 本次更新 / What's new in 0.0.6
+
+- 域见自行联网刷新完整官方目录，无需先打开 LSPosed 仓库；继续沿用管理器更新通道，联网失败时标明缓存结果，尚未检查时不再显示“0 个更新”。<br>
+  ScopeView refreshes the full official catalog directly without opening the LSPosed repository first, follows the Manager's update channel, labels cached results on network failure, and shows unchecked status instead of “0 updates”.
+- 默认将“模块更新”放在“应用作用域”之前，扳手设置新增“首页标签顺序”，可选择并保存顺序，左侧标签作为下次启动默认页。<br>
+  Module Updates now comes before App Scopes by default; choose and save Home tab order in Settings, with the left tab opening by default on the next launch.
+- 切换标签顺序时保留当前页面，更新角标始终对应模块更新；改善深色模式下已选设置项的文字对比度。<br>
+  Keep the current page selected when changing tab order, keep the badge on Module Updates, and improve text contrast for selected settings in dark mode.
