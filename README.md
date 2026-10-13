@@ -42,8 +42,10 @@
 
 - **按应用查看模块**：查看一个应用被哪些模块选入作用域，显示应用名称、包名、图标及 Android 用户信息。<br>
   **Modules by app:** See which modules include an app in their scopes, with app names, package names, icons and Android user information.
-- **查看模块更新**：每次刷新读取完整官方目录，优先跟随 LSPosed 管理器通道；联网失败时显示可用缓存，并识别仅名称变化的版本更新。<br>
-  **Check module updates:** Refresh the full official catalog, follow LSPosed Manager's selected channel, show available cached results when the network fails, and recognize version-name-only updates.
+- **查看模块更新**：主动联网刷新并核对管理器缓存，按模块与通道保留较新的发布；沿用管理器通道，联网失败时显示缓存，识别仅名称变化的更新。<br>
+  **Check module updates:** Refresh online and reconcile the Manager cache, keeping newer releases per module and channel; follow the Manager channel, show cached results on network failure, and recognize version-name-only updates.
+- **通知快捷入口**：默认开启，允许通知权限后从通知栏点击打开域见；设置中可关闭并保存选择。<br>
+  **Notification shortcut:** Enabled by default; allow notifications and tap to open ScopeView, or turn it off in Settings with your choice saved.
 - **优先显示更新**：有更新的模块始终排在前面，各组内保留你选择的排序规则。<br>
   **Updates first:** Modules with available updates always appear first, with your chosen sort order preserved within each group.
 - **单个或批量更新**：支持更新单个模块或“更新全部”；Beta、Nightly 和多 APK 项目由你逐项选择或跳过，没有 APK 的更新需你确认跳过。<br>
@@ -145,3 +147,10 @@ Project: [ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitia
   Module Updates now comes before App Scopes by default; choose and save Home tab order in Settings, with the left tab opening by default on the next launch.
 - 切换标签顺序时保留当前页面，更新角标始终对应模块更新；改善深色模式下已选设置项的文字对比度。<br>
   Keep the current page selected when changing tab order, keep the badge on Module Updates, and improve text contrast for selected settings in dark mode.
+
+## 本次更新 / What's new in 0.0.7
+
+- 修复联网目录与管理器仓库不同步时遗漏更新的问题，按模块分别核对稳定、Beta 和 Nightly 发布，保留较新版本及其对应 APK；无需先打开 LSP 仓库也能主动刷新。<br>
+  Fix missing updates when the online catalog and Manager repository differ by comparing each module within Stable, Beta and Nightly, keeping the newer release with its own APKs; direct refresh still works without opening the LSP repository first.
+- 新增默认开启的常驻通知快捷入口，允许通知权限后下拉通知栏即可点击打开域见；扳手设置可关闭并保存选择，开启时在设备重启或应用升级后恢复。<br>
+  Add a persistent notification shortcut enabled by default: allow notifications and tap it to open ScopeView; turn it off in Settings, with the choice saved and enabled shortcuts restored after reboot or app updates.
