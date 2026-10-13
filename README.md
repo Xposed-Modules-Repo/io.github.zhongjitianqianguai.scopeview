@@ -154,3 +154,12 @@ Project: [ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitia
   Fix missing updates when the online catalog and Manager repository differ by comparing each module within Stable, Beta and Nightly, keeping the newer release with its own APKs; direct refresh still works without opening the LSP repository first.
 - 新增默认开启的常驻通知快捷入口，允许通知权限后下拉通知栏即可点击打开域见；扳手设置可关闭并保存选择，开启时在设备重启或应用升级后恢复。<br>
   Add a persistent notification shortcut enabled by default: allow notifications and tap it to open ScopeView; turn it off in Settings, with the choice saved and enabled shortcuts restored after reboot or app updates.
+
+## 本次更新 / What's new in 0.0.8
+
+- 优化更新时的按钮响应：忙碌状态与下载进度直接更新已有卡片，合并重复界面通知，保留完整列表与统一滚动布局。<br>
+  Improve button responsiveness during updates by changing action states and progress in existing cards and combining duplicate UI notifications, while retaining the full list and shared scrolling layout.
+- 修复官方目录中的旧 APK 链接失效：遇到 404 时刷新同一标签、同一通道的发布附件，单个和批量更新均支持恢复下载。<br>
+  Recover expired APK links from the official catalog: on a 404, refresh assets for the same tag and channel, supporting both individual and batch updates.
+- 保留原文件选择；原文件消失且无法确定唯一替代时，提示重新选择 APK。更新期间保留选中的版本，继续核验包名、官方版本码及实际 APK 版本。<br>
+  Preserve the selected filename and request another APK choice when it disappears without an unambiguous replacement; retain the chosen version and continue checking package identity, official version code and the actual APK version.
