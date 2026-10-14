@@ -42,10 +42,10 @@
 
 - **按应用查看模块**：查看一个应用被哪些模块选入作用域，显示应用名称、包名、图标及 Android 用户信息。<br>
   **Modules by app:** See which modules include an app in their scopes, with app names, package names, icons and Android user information.
-- **查看模块更新**：主动联网刷新并核对管理器缓存，按模块与通道保留较新的发布；沿用管理器通道，联网失败时显示缓存，识别仅名称变化的更新。<br>
-  **Check module updates:** Refresh online and reconcile the Manager cache, keeping newer releases per module and channel; follow the Manager channel, show cached results on network failure, and recognize version-name-only updates.
-- **通知快捷入口**：默认开启，允许通知权限后从通知栏点击打开域见；设置中可关闭并保存选择。<br>
-  **Notification shortcut:** Enabled by default; allow notifications and tap to open ScopeView, or turn it off in Settings with your choice saved.
+- **查看模块更新**：直接检查已安装模块的官方详情，并核对管理器缓存；沿用更新通道，失败时保留已有结果，识别仅名称变化的更新。<br>
+  **Check module updates:** Check official details for installed modules and reconcile the Manager cache; follow the selected channel, retain existing results on failure and recognize version-name-only updates.
+- **通知快捷入口**：默认开启，点击通知打开域见；授权 Root 和通知权限后，划掉后台仍保留入口，设置中可关闭并保存选择。<br>
+  **Notification shortcut:** Enabled by default; tap to open ScopeView. With Root and notification permission granted, it remains after removing the app from Recents; turn it off in Settings with your choice saved.
 - **优先显示更新**：有更新的模块始终排在前面，各组内保留你选择的排序规则。<br>
   **Updates first:** Modules with available updates always appear first, with your chosen sort order preserved within each group.
 - **单个或批量更新**：支持更新单个模块或“更新全部”；Beta、Nightly 和多 APK 项目由你逐项选择或跳过，没有 APK 的更新需你确认跳过。<br>
@@ -58,6 +58,9 @@
   **Chinese and English:** Follow the system language by default or choose Simplified Chinese or English manually.
 - **跳转管理器**：从模块详情打开 LSPosed 管理器中的对应模块。<br>
   **Open in Manager:** Open the corresponding module in LSPosed Manager from its details.
+
+- **模块日志与诊断**：展开或收起模块发布说明，支持 Markdown；在设置中导出诊断日志。<br>
+  **Module notes and diagnostics:** Expand or collapse release notes with Markdown support and export diagnostic logs from Settings.
 
 ## 使用要求 / Requirements
 
@@ -102,78 +105,3 @@ Package names and versions are verified before installation, while Android retai
 
 Root 安装失败时，可将已验证的 APK 交给系统安装器。<br>
 If Root installation fails, the verified APK can be handed to the system installer.
-
-## 本次更新 / What's new in 0.0.3
-
-- 新增模块更新日志展开与收起，支持 Markdown 显示；官方模块按需读取日志，自定义来源保留发布说明。<br>
-  Expand or collapse module changelogs with Markdown rendering; official notes load on demand and custom sources retain release descriptions.
-- 补充 LSPosed 寄生管理器和秘密代码备用入口，保留独立管理器跳转；备用入口打开首页时会给出提示。<br>
-  Add parasitic-manager and secret-code fallback routes while retaining standalone-manager navigation, with a notice when a fallback opens the home page.
-- 在设置的“日志与诊断”中导出并分享诊断日志，记录管理器打开、读取、下载、安装等关键步骤。<br>
-  Export and share diagnostic logs from Logs and diagnostics in Settings, including key manager, read, download and installation steps.
-- 增加帧耗时、长帧、布局与绘制、界面任务墙钟/CPU 耗时及内存信息，方便排查卡顿。<br>
-  Add frame timing, slow-frame, layout and draw, UI task wall/CPU timing, and memory information to help investigate lag.
-- 整理设置页面，加入官方交流群、发布频道和项目 Star 入口，更新返回箭头；日志导出使用明确的文字按钮。<br>
-  Organize Settings with the official group, release channel and project Star links, update the back arrow, and use a clearly labeled log-export button.
-- 调整长截图相关布局：标题栏下全部内容统一滚动，详情与设置共用外层 ScrollView；分别保存页面位置并复用未变化的卡片。<br>
-  Adjust the layout for scrolling screenshots: all content below the toolbar scrolls together, details and Settings share the outer ScrollView, and page positions and unchanged cards are retained.
-
-项目地址：[域见 ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview)。你的 Star ⭐ 是我持续更新的最大动力。<br>
-Project: [ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview). Your Star ⭐ is my biggest motivation to keep updating ScopeView.
-
-## 本次更新 / What's new in 0.0.4
-
-- 修复寄生管理器模式读取 LSP 仓库缓存时提示“未找到仓库缓存”的问题，补充当前用户的宿主缓存路径，保留独立管理器支持。<br>
-  Fix repository-cache lookup in parasitic-manager mode by adding the current user's host cache path while retaining standalone-manager support.
-- 独立与寄生缓存都存在时，读取更新较新的一份，并使用同一来源的更新通道，保留 Stable、Beta 和 Nightly 行为。<br>
-  When both caches exist, read the newer one and its matching update channel, preserving Stable, Beta and Nightly behavior.
-- 增加缓存探测与选择日志，记录来源、时间和通道，方便排查读取问题；管理器文件保持只读。<br>
-  Add cache-probe and selection logs with the source, timestamp and channel to help diagnose read issues; Manager files remain read-only.
-
-## 本次更新 / What's new in 0.0.5
-
-- 直接隐藏当前用户未安装或未识别的模块配置，以及仅关联这些记录的应用；数量和排序只统计已安装模块，不修改 LSPosed 原配置。<br>
-  Hide configuration records for modules not installed or recognized for the current user, and apps linked only to those records; counts and sorting use installed modules without changing LSPosed configuration.
-- 优化域见自身更新：批量任务最后处理域见，安装前保存目标版本和此前结果，重新打开后核对实际版本并恢复结果，避免进程替换丢失记录。<br>
-  Improve ScopeView self-updates: process ScopeView last in a batch, save the target version and earlier results before installation, and verify the installed version and restore results when reopened.
-- 自身更新取消、失败或尚未确认时不误报成功，保留有效安装包供手动重试；Root 和系统安装入口继续可用，不自动重复旧任务。<br>
-  Do not report cancelled, failed or unconfirmed self-updates as successful; retain valid APKs for manual retry, keep Root and system-installer routes, and avoid automatically repeating old tasks.
-
-## 本次更新 / What's new in 0.0.6
-
-- 域见自行联网刷新完整官方目录，无需先打开 LSPosed 仓库；继续沿用管理器更新通道，联网失败时标明缓存结果，尚未检查时不再显示“0 个更新”。<br>
-  ScopeView refreshes the full official catalog directly without opening the LSPosed repository first, follows the Manager's update channel, labels cached results on network failure, and shows unchecked status instead of “0 updates”.
-- 默认将“模块更新”放在“应用作用域”之前，扳手设置新增“首页标签顺序”，可选择并保存顺序，左侧标签作为下次启动默认页。<br>
-  Module Updates now comes before App Scopes by default; choose and save Home tab order in Settings, with the left tab opening by default on the next launch.
-- 切换标签顺序时保留当前页面，更新角标始终对应模块更新；改善深色模式下已选设置项的文字对比度。<br>
-  Keep the current page selected when changing tab order, keep the badge on Module Updates, and improve text contrast for selected settings in dark mode.
-
-## 本次更新 / What's new in 0.0.7
-
-- 修复联网目录与管理器仓库不同步时遗漏更新的问题，按模块分别核对稳定、Beta 和 Nightly 发布，保留较新版本及其对应 APK；无需先打开 LSP 仓库也能主动刷新。<br>
-  Fix missing updates when the online catalog and Manager repository differ by comparing each module within Stable, Beta and Nightly, keeping the newer release with its own APKs; direct refresh still works without opening the LSP repository first.
-- 新增默认开启的常驻通知快捷入口，允许通知权限后下拉通知栏即可点击打开域见；扳手设置可关闭并保存选择，开启时在设备重启或应用升级后恢复。<br>
-  Add a persistent notification shortcut enabled by default: allow notifications and tap it to open ScopeView; turn it off in Settings, with the choice saved and enabled shortcuts restored after reboot or app updates.
-
-## 本次更新 / What's new in 0.0.8
-
-- 优化更新时的按钮响应：忙碌状态与下载进度直接更新已有卡片，合并重复界面通知，保留完整列表与统一滚动布局。<br>
-  Improve button responsiveness during updates by changing action states and progress in existing cards and combining duplicate UI notifications, while retaining the full list and shared scrolling layout.
-- 修复官方目录中的旧 APK 链接失效：遇到 404 时刷新同一标签、同一通道的发布附件，单个和批量更新均支持恢复下载。<br>
-  Recover expired APK links from the official catalog: on a 404, refresh assets for the same tag and channel, supporting both individual and batch updates.
-- 保留原文件选择；原文件消失且无法确定唯一替代时，提示重新选择 APK。更新期间保留选中的版本，继续核验包名、官方版本码及实际 APK 版本。<br>
-  Preserve the selected filename and request another APK choice when it disappears without an unambiguous replacement; retain the chosen version and continue checking package identity, official version code and the actual APK version.
-
-## 本次更新 / What's new in 0.0.9
-
-- 刷新更新时，直接检查已安装且已收录模块的官方详情，减少总目录滞后带来的漏报；无需先打开 LSP 仓库，继续沿用 Stable、Beta、Nightly 通道，失败项保留已有结果并明确提示。<br>
-  Check official details for installed, listed modules during refresh to reduce missed updates from an outdated full catalog; no need to open the LSP repository first, with Stable, Beta and Nightly channels retained and failed checks keeping their existing results with a notice.
-- 常驻通知支持 Root 系统入口：授权 Root 和通知权限后，划掉后台或停止域见仍保留快捷入口，点击即可重新打开；默认开启并尊重已有关闭选择，扳手设置可关闭并移除。<br>
-  Add a Root system shortcut for the persistent notification: after granting Root and notification permission, it remains when ScopeView is removed from Recents or stopped and opens the app when tapped; it is enabled by default, respects an existing off choice and can be removed from Settings.
-- Root 通知发布完成后进程退出，不增加持续保活进程或后台更新/安装任务；未授权 Root 时保留普通通知入口。<br>
-  The Root posting process exits when finished, without a persistent keep-alive process or background update/install tasks; the ordinary notification remains available without a Root grant.
-- 修复浅色模式下 LSPosed 配置连接展开/收起按钮的异常阴影，保留手动展开、收起和读取完成后自动收起。<br>
-  Fix the unusual shadow on the LSPosed connection expand/collapse button in light mode, retaining manual expansion, collapse and automatic collapse after a successful read.
-
-官方详情服务仍可能存在短时缓存，本版本不保证发布后秒级发现更新。<br>
-Official details may still be cached briefly; this release does not guarantee detection seconds after publication.
