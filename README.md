@@ -29,9 +29,9 @@
 </p>
 
 <p align="center">
-  如果域见对你有帮助，欢迎点一个 Star 支持项目 ⭐
+  你的 Star ⭐ 是我持续更新的最大动力。
   <br>
-  If ScopeView helps you, please consider leaving a Star.
+  Your Star ⭐ is my biggest motivation to keep updating ScopeView.
 </p>
 
 <p align="center">
@@ -118,8 +118,8 @@ If Root installation fails, the verified APK can be handed to the system install
 - 调整长截图相关布局：标题栏下全部内容统一滚动，详情与设置共用外层 ScrollView；分别保存页面位置并复用未变化的卡片。<br>
   Adjust the layout for scrolling screenshots: all content below the toolbar scrolls together, details and Settings share the outer ScrollView, and page positions and unchanged cards are retained.
 
-项目地址：[域见 ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview)，欢迎点一个 Star 支持项目 ⭐<br>
-Project: [ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview). Please consider leaving a Star if it helps you.
+项目地址：[域见 ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview)。你的 Star ⭐ 是我持续更新的最大动力。<br>
+Project: [ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitianqianguai.scopeview). Your Star ⭐ is my biggest motivation to keep updating ScopeView.
 
 ## 本次更新 / What's new in 0.0.4
 
