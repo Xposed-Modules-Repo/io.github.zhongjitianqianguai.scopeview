@@ -163,3 +163,17 @@ Project: [ScopeView](https://github.com/Xposed-Modules-Repo/io.github.zhongjitia
   Recover expired APK links from the official catalog: on a 404, refresh assets for the same tag and channel, supporting both individual and batch updates.
 - 保留原文件选择；原文件消失且无法确定唯一替代时，提示重新选择 APK。更新期间保留选中的版本，继续核验包名、官方版本码及实际 APK 版本。<br>
   Preserve the selected filename and request another APK choice when it disappears without an unambiguous replacement; retain the chosen version and continue checking package identity, official version code and the actual APK version.
+
+## 本次更新 / What's new in 0.0.9
+
+- 刷新更新时，直接检查已安装且已收录模块的官方详情，减少总目录滞后带来的漏报；无需先打开 LSP 仓库，继续沿用 Stable、Beta、Nightly 通道，失败项保留已有结果并明确提示。<br>
+  Check official details for installed, listed modules during refresh to reduce missed updates from an outdated full catalog; no need to open the LSP repository first, with Stable, Beta and Nightly channels retained and failed checks keeping their existing results with a notice.
+- 常驻通知支持 Root 系统入口：授权 Root 和通知权限后，划掉后台或停止域见仍保留快捷入口，点击即可重新打开；默认开启并尊重已有关闭选择，扳手设置可关闭并移除。<br>
+  Add a Root system shortcut for the persistent notification: after granting Root and notification permission, it remains when ScopeView is removed from Recents or stopped and opens the app when tapped; it is enabled by default, respects an existing off choice and can be removed from Settings.
+- Root 通知发布完成后进程退出，不增加持续保活进程或后台更新/安装任务；未授权 Root 时保留普通通知入口。<br>
+  The Root posting process exits when finished, without a persistent keep-alive process or background update/install tasks; the ordinary notification remains available without a Root grant.
+- 修复浅色模式下 LSPosed 配置连接展开/收起按钮的异常阴影，保留手动展开、收起和读取完成后自动收起。<br>
+  Fix the unusual shadow on the LSPosed connection expand/collapse button in light mode, retaining manual expansion, collapse and automatic collapse after a successful read.
+
+官方详情服务仍可能存在短时缓存，本版本不保证发布后秒级发现更新。<br>
+Official details may still be cached briefly; this release does not guarantee detection seconds after publication.
