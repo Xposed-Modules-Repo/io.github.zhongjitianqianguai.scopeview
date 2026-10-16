@@ -48,8 +48,8 @@
   **Notification shortcut:** Enabled by default; tap to open ScopeView. With Root and notification permission granted, it remains after removing the app from Recents; turn it off in Settings with your choice saved.
 - **优先显示更新**：有更新的模块始终排在前面，各组内保留你选择的排序规则。<br>
   **Updates first:** Modules with available updates always appear first, with your chosen sort order preserved within each group.
-- **单个或批量更新**：支持更新单个模块或“更新全部”；Beta、Nightly 和多 APK 项目由你逐项选择或跳过，没有 APK 的更新需你确认跳过。<br>
-  **Individual or batch updates:** Update one module or use Update all; choose or skip each Beta, Nightly, or multi-APK item, and explicitly skip updates with no APK.
+- **单个、多选或全部更新**：支持更新单个模块、勾选后“更新所选”或“更新全部”；Beta、Nightly 和多 APK 项目由你逐项选择或跳过，没有 APK 的更新需你确认跳过。<br>
+  **Individual, selected or all updates:** Update one module, select several with Update selected or use Update all; choose or skip each Beta, Nightly, or multi-APK item, and explicitly skip updates with no APK.
 - **取消剩余任务**：等待当前更新完成，再停止后续更新。<br>
   **Cancel remaining updates:** Let the current update finish, then stop the remaining items.
 - **搜索与排序**：按名称或包名搜索，为应用、模块和作用域详情分别保存排序规则。<br>
@@ -61,6 +61,11 @@
 
 - **模块日志与诊断**：展开或收起模块发布说明，支持 Markdown；在设置中导出诊断日志。<br>
   **Module notes and diagnostics:** Expand or collapse release notes with Markdown support and export diagnostic logs from Settings.
+
+- **后台更新提醒**：默认每四小时联网检查，有更新时通知；设置中可独立关闭，沿用最近一次读取的管理器通道，不自动下载或安装。系统省电限制可能延后检查，强行停止后需重新打开域见。<br>
+  **Background reminders:** Check online every four hours by default and notify about updates. Disable this separately in Settings. Checks follow the last Manager channel without automatic downloads or installation. Power restrictions may delay checks; reopen ScopeView after force stop.
+- **Material 3 Expressive**：提供浅色和深色界面，保留固定标题栏与自然滚动；大列表分帧更新，重建界面后恢复滚动位置。<br>
+  **Material 3 Expressive:** Light and dark interfaces retain the fixed toolbar and natural scrolling. Large lists update across frames and restore their scroll position after recreation.
 
 ## 使用要求 / Requirements
 
@@ -85,10 +90,10 @@ The Xposed entry only writes a framework log when ScopeView's main process loads
    Open ScopeView, tap Read scopes and follow the guide to grant Root access.
 2. 在应用列表中搜索目标应用，查看关联模块。<br>
    Search for an app in the app list to see its associated modules.
-3. 首次成功读取后，应用启动或回到前台会自动刷新。<br>
-   After the first successful read, scope data refreshes when ScopeView opens or returns to the foreground.
-4. 切换到模块更新列表，选择单个更新或“更新全部”。<br>
-   Switch to the module update list to update one module or use Update all.
+3. 首次成功读取后，回到前台的自动刷新设有十分钟冷却；冷却从上一轮读取结束时开始，手动刷新不受影响。<br>
+   After the first successful read, automatic foreground refreshes have a ten-minute cooldown starting when the previous read finishes; manual refreshes remain immediate.
+4. 切换到模块更新列表，选择单个更新、勾选后“更新所选”或“更新全部”。<br>
+   Switch to the module update list to update one module, use Update selected or Update all.
 5. 点击“刷新更新”获取官方目录；应用会沿用 LSPosed 管理器的通道，并在联网失败时显示可用缓存。<br>
    Tap Refresh updates to fetch the official catalog; ScopeView follows LSPosed Manager's channel and shows usable cached results if the request fails.
 
@@ -97,11 +102,25 @@ The Xposed entry only writes a framework log when ScopeView's main process loads
 域见只读显示作用域，不修改 LSPosed 配置。<br>
 ScopeView displays scopes without modifying the LSPosed configuration.
 
-更新必须由你主动发起；Beta、Nightly 和多 APK 版本需要你选择，稳定版单 APK 可加入更新队列。<br>
-Updates require your explicit action; choose Beta, Nightly and multi-APK releases, while a stable release with one APK can enter the update queue automatically.
+后台检查只发出提醒，下载和安装必须由你主动发起；Beta、Nightly 和多 APK 版本需要你选择，稳定版单 APK 可加入更新队列。<br>
+Background checks only send reminders; downloads and installation require your explicit action; choose Beta, Nightly and multi-APK releases, while a stable release with one APK can enter the update queue automatically.
 
 安装前会核验包名与版本，并保留 Android 的签名和兼容性检查。<br>
 Package names and versions are verified before installation, while Android retains its signature and compatibility checks.
 
 Root 安装失败时，可将已验证的 APK 交给系统安装器。<br>
 If Root installation fails, the verified APK can be handed to the system installer.
+
+作用域记录保留 Android 用户 ID，应用名称和已安装状态按当前用户显示。<br>
+Scope records retain Android user IDs, while app names and installation status are resolved for the current user.
+
+Android 的同包 APK 由多个用户共享，因此更新模块也会更新其他已安装该模块的用户所使用的程序代码。<br>
+Android shares package code across users, so updating a module also updates the code used by other users who have that package installed.
+
+## 测试版迁移 / Migrating from test builds
+
+正式版使用专用签名，无法直接覆盖此前本地安装的调试版。<br>
+The release uses a dedicated signing key and cannot directly replace a locally installed debug build.
+
+卸载调试版会删除其应用数据，迁移前请保留需要的本地设置。<br>
+Uninstalling the debug build removes its app data; preserve any local settings you need before migrating.
