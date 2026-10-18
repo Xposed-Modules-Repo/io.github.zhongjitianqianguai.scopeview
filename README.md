@@ -59,8 +59,10 @@
 - **跳转管理器**：从模块详情打开 LSPosed 管理器中的对应模块。<br>
   **Open in Manager:** Open the corresponding module in LSPosed Manager from its details.
 
-- **模块日志与诊断**：展开或收起模块发布说明，支持 Markdown；在设置中导出诊断日志。<br>
-  **Module notes and diagnostics:** Expand or collapse release notes with Markdown support and export diagnostic logs from Settings.
+- **模块日志与诊断**：展开或收起模块发布说明，支持 Markdown；导出日志包含各模块的关联和状态快照，慢操作标明界面、模块与阶段。<br>
+  **Module notes and diagnostics:** Expand or collapse Markdown release notes. Export logs with per-module associations and state snapshots, plus screen, module and stage context for slow operations.
+- **安装包清理**：在扳手设置查看并清理已安装或旧版本的缓存包与中断下载；保留待安装、较新版本和自身更新核对所需的文件。<br>
+  **APK cleanup:** Inspect and clear installed or older cached APKs and interrupted downloads in Settings, while retaining pending installers, newer versions and files needed to verify ScopeView's own update.
 
 - **后台更新提醒**：默认每四小时联网检查，有更新时通知；设置中可独立关闭，沿用最近一次读取的管理器通道，不自动下载或安装。系统省电限制可能延后检查，强行停止后需重新打开域见。<br>
   **Background reminders:** Check online every four hours by default and notify about updates. Disable this separately in Settings. Checks follow the last Manager channel without automatic downloads or installation. Power restrictions may delay checks; reopen ScopeView after force stop.
@@ -101,6 +103,9 @@ The Xposed entry only writes a framework log when ScopeView's main process loads
 
 域见只读显示作用域，不修改 LSPosed 配置。<br>
 ScopeView displays scopes without modifying the LSPosed configuration.
+
+已读取的关联会保存在域见本地；在管理器中取消勾选后，仍显示为“对此应用已停用”，并与模块总开关状态分开。未曾读取且已删除的关联无法还原，未安装或未识别模块仍隐藏。<br>
+Associations already read are saved locally in ScopeView. After deselection in the Manager, they remain visible as disabled for that app, separately from the module switch. Deleted associations never read cannot be recovered; uninstalled or unrecognized modules remain hidden.
 
 后台检查只发出提醒，下载和安装必须由你主动发起；Beta、Nightly 和多 APK 版本需要你选择，稳定版单 APK 可加入更新队列。<br>
 Background checks only send reminders; downloads and installation require your explicit action; choose Beta, Nightly and multi-APK releases, while a stable release with one APK can enter the update queue automatically.
