@@ -54,8 +54,8 @@
   **Cancel remaining updates:** Let the current update finish, then stop the remaining items.
 - **搜索与排序**：按名称或包名搜索，为应用、模块和作用域详情分别保存排序规则。<br>
   **Search and sort:** Search by name or package name and save separate sort preferences for apps, modules and scope details.
-- **中英界面**：默认跟随系统语言，也可手动选择简体中文或英文。<br>
-  **Chinese and English:** Follow the system language by default or choose Simplified Chinese or English manually.
+- **多语言界面**：默认跟随系统语言，也可手动选择简体中文、英文或俄语。<br>
+  **Multiple languages:** Follow the system language by default or choose Simplified Chinese, English or Russian manually.
 - **跳转管理器**：从模块详情打开 LSPosed 管理器中的对应模块。<br>
   **Open in Manager:** Open the corresponding module in LSPosed Manager from its details.
 
@@ -63,6 +63,8 @@
   **Module notes and diagnostics:** Expand or collapse Markdown release notes. Export logs with per-module associations and state snapshots, plus screen, module and stage context for slow operations.
 - **安装包清理**：在扳手设置查看并清理已安装或旧版本的缓存包与中断下载；保留待安装、较新版本和自身更新核对所需的文件。<br>
   **APK cleanup:** Inspect and clear installed or older cached APKs and interrupted downloads in Settings, while retaining pending installers, newer versions and files needed to verify ScopeView's own update.
+- **忽略更新与卸载**：在模块卡片的“更多”中永久忽略该模块更新，扳手设置可恢复；忽略项保留显示和主动单独更新，不参与更新计数、批量更新或后台提醒。卸载交由系统确认，返回后扫描实际安装状态。<br>
+  **Ignore updates and uninstall:** Permanently ignore a module through its card's More menu and restore it in Settings. Ignored modules remain visible and can be updated individually, while being excluded from counts, batch updates and reminders. Uninstallation uses system confirmation and rescans installed packages after return.
 
 - **后台更新提醒**：默认每四小时联网检查，有更新时通知；设置中可独立关闭，沿用最近一次读取的管理器通道，不自动下载或安装。系统省电限制可能延后检查，强行停止后需重新打开域见。<br>
   **Background reminders:** Check online every four hours by default and notify about updates. Disable this separately in Settings. Checks follow the last Manager channel without automatic downloads or installation. Power restrictions may delay checks; reopen ScopeView after force stop.
