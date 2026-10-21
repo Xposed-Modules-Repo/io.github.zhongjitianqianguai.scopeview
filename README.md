@@ -123,11 +123,3 @@ Scope records retain Android user IDs, while app names and installation status a
 
 Android 的同包 APK 由多个用户共享，因此更新模块也会更新其他已安装该模块的用户所使用的程序代码。<br>
 Android shares package code across users, so updating a module also updates the code used by other users who have that package installed.
-
-## 测试版迁移 / Migrating from test builds
-
-正式版使用专用签名，无法直接覆盖此前本地安装的调试版。<br>
-The release uses a dedicated signing key and cannot directly replace a locally installed debug build.
-
-卸载调试版会删除其应用数据，迁移前请保留需要的本地设置。<br>
-Uninstalling the debug build removes its app data; preserve any local settings you need before migrating.
