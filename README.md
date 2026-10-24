@@ -40,8 +40,8 @@
 
 ## 主要功能 / Features
 
-- **发现模块**：浏览最近更新和新收录模块，卡片直接查看简介与更新摘要；支持搜索、通道选择、隐藏已安装、收藏和已读标记。<br>
-  **Discover modules:** Browse recent updates and new listings with descriptions and release previews on each card; search, choose a channel, hide installed modules, bookmark and track what you have read.
+- **发现模块**：浏览最近更新和新收录模块，卡片直接查看简介与更新摘要；支持搜索、通道选择、隐藏已安装/已收藏、Star 排序、收藏和已读标记。<br>
+  **Discover modules:** Browse recent updates and new listings with descriptions and release previews on each card; search, choose a channel, hide installed or saved modules, sort by stars, bookmark and track what you have read.
 - **按需查看详情**：原地展开或打开详情，查看 README、发布说明和历史版本；APK 链接交给浏览器下载，已安装模块可进入现有更新流程。<br>
   **Details on demand:** Expand a card or open its details for the README, release notes and history. APK links open in your browser, while installed modules can use the existing update flow.
 - **按应用查看模块**：查看一个应用被哪些模块选入作用域，显示应用名称、包名、图标及 Android 用户信息。<br>
@@ -72,8 +72,12 @@
 - **忽略更新与卸载**：在模块卡片的“更多”中永久忽略该模块更新，扳手设置可恢复；忽略项保留显示和主动单独更新，不参与更新计数、批量更新或后台提醒。卸载交由系统确认，返回后扫描实际安装状态。<br>
   **Ignore updates and uninstall:** Permanently ignore a module through its card's More menu and restore it in Settings. Ignored modules remain visible and can be updated individually, while being excluded from counts, batch updates and reminders. Uninstallation uses system confirmation and rescans installed packages after return.
 
-- **后台更新与提醒**：默认每四小时处理模块、作用域和发现列表，有更新时通知；进入应用先显示可操作的缓存，冷启动另读一次本机作用域，普通返回前台不重复刷新。支持手动刷新和独立关闭，不自动下载或安装；系统可能延后任务，强行停止后需重新打开域见。<br>
-  **Background refresh and reminders:** Refresh module, scope and Discover lists every four hours by default and notify about updates. Open actionable cached lists immediately; a cold start also reads local scopes once, while ordinary resumes do not refresh them. Refresh manually or disable background checks separately. No automatic downloads or installation; Android may delay jobs, and ScopeView must be reopened after force stop.
+- **后台更新与提醒**：默认每四小时处理模块、作用域和发现列表，有更新时通知；进入应用先显示可操作的缓存；已有待更新项时保留列表，无缓存或过期时按现有策略补全，普通返回前台不重复刷新。支持手动刷新和独立关闭，不自动下载或安装；系统可能延后任务，强行停止后需重新打开域见。<br>
+  **Background refresh and reminders:** Refresh module, scope and Discover lists every four hours by default and notify about updates. Open actionable cached lists immediately. Retain lists with pending updates and fill missing or expired caches under the existing refresh policy; ordinary resumes do not repeat refreshes. Refresh manually or disable background checks separately. No automatic downloads or installation; Android may delay jobs, and ScopeView must be reopened after force stop.
+- **配置备份**：在扳手中导出和导入用户设置、排序、收藏、忽略更新和自定义来源，包含有效默认值；不复制 Root、作用域、安装任务、APK 或目录缓存。<br>
+  **Configuration backup:** Export and import user settings, sort order, bookmarks, ignored modules and custom sources, including effective defaults. Root state, scopes, installation tasks, APKs and catalog caches are excluded.
+- **后台恢复**：可控制开机恢复与进程退出后的后台恢复，不自动弹出界面；系统限制及主动强行停止仍按 Android 行为处理。<br>
+  **Background recovery:** Control boot restoration and recovery after process exit without opening a screen; Android restrictions and user force-stop remain respected.
 - **Material 3 Expressive**：提供浅色和深色界面，保留固定标题栏与自然滚动；大列表分帧更新，重建界面后恢复滚动位置。<br>
   **Material 3 Expressive:** Light and dark interfaces retain the fixed toolbar and natural scrolling. Large lists update across frames and restore their scroll position after recreation.
 
@@ -100,12 +104,12 @@ The Xposed entry only writes a framework log when ScopeView's main process loads
    Open ScopeView for one proactive Root request per launch while permission is missing, or retry with the explicit grant button. After authorization, read local scopes; Root can supplement module discovery for the current user when the ordinary app list is restricted.
 2. 在应用列表中搜索目标应用，查看关联模块。<br>
    Search for an app in the app list to see its associated modules.
-3. 首次没有仓库缓存时，点击“刷新更新”或在“发现”中手动刷新；之后后台统一维护缓存。重新启动只额外读取本机作用域，下拉通知栏或切后台返回不触发整表刷新。<br>
-   If no repository cache is available, tap Refresh updates or refresh Discover manually; background checks maintain the caches afterward. A cold start additionally reads local scopes, while returning from the notification shade or another app does not refresh the whole list.
+3. 进入应用先显示缓存；点击“刷新全部”统一扫描模块、读取作用域并检查更新，也可在“发现”中刷新目录。后台自动刷新默认开启，可在扳手中关闭。<br>
+   Open cached lists first. Refresh all scans modules, reads scopes and checks updates together; Discover can refresh its catalog separately. Background refresh is enabled by default and can be disabled in Settings.
 4. 切换到模块更新列表，选择单个更新、勾选后“更新所选”或“更新全部”。<br>
    Switch to the module update list to update one module, use Update selected or Update all.
-5. 点击“刷新更新”获取官方目录；应用会沿用 LSPosed 管理器的通道，并在联网失败时显示可用缓存。<br>
-   Tap Refresh updates to fetch the official catalog; ScopeView follows LSPosed Manager's channel and shows usable cached results if the request fails.
+5. 更新检查沿用管理器的来源和通道，兼容 Vector 的“仅正式版 / 包含预发布版”；联网失败时保留可用缓存。<br>
+   Update checks follow the Manager’s source and channel, including Vector’s stable-only and prerelease-inclusive modes, and retain usable cached results when requests fail.
 
 6. 打开“发现”，按最近更新或新收录浏览；展开摘要，收藏感兴趣的模块，或进入详情查看 README、历史版本和下载链接。<br>
    Open Discover to browse recent updates or new listings, expand previews, bookmark interesting modules or open details for the README, history and download links.
