@@ -40,10 +40,10 @@
 
 ## 主要功能 / Features
 
-- **发现模块**：浏览最近更新和新收录模块，卡片直接查看简介与更新摘要；支持搜索、通道选择、隐藏已安装/已收藏、Star 排序、收藏和已读标记。<br>
-  **Discover modules:** Browse recent updates and new listings with descriptions and release previews on each card; search, choose a channel, hide installed or saved modules, sort by stars, bookmark and track what you have read.
-- **按需查看详情**：原地展开或打开详情，查看 README、发布说明和历史版本；APK 链接交给浏览器下载，已安装模块可进入现有更新流程。<br>
-  **Details on demand:** Expand a card or open its details for the README, release notes and history. APK links open in your browser, while installed modules can use the existing update flow.
+- **发现模块**：浏览最近更新和新收录模块，卡片直接查看简介与更新摘要；支持搜索、通道选择、隐藏已安装/已收藏、Star 排序、收藏、未看记录和屏蔽恢复。<br>
+  **Discover modules:** Browse recent updates and new listings with descriptions and release previews on each card; search, choose a channel, hide installed or saved modules, sort by stars, bookmark, track unseen modules and manage blocked modules.
+- **按需查看详情**：原地展开或打开详情，查看 README、发布说明和历史版本；固定版本与下载入口便于跳过长文，APK 附件可在应用内下载、校验并通过 Root 或系统安装器安装。<br>
+  **Details on demand:** Expand a card or open its details for the README, release notes and history. A fixed version and download shortcut bypasses long text; download and verify APK attachments in the app, then install with Root or the system installer.
 - **按应用查看模块**：查看一个应用被哪些模块选入作用域，显示应用名称、包名、图标及 Android 用户信息。<br>
   **Modules by app:** See which modules include an app in their scopes, with app names, package names, icons and Android user information.
 - **查看模块更新**：跟随管理器选择的官方来源和通道，检查已安装模块详情并核对缓存；失败时保留已有结果，识别仅名称变化的更新。<br>
@@ -69,17 +69,17 @@
   **Module notes and diagnostics:** Expand or collapse Markdown release notes. Export logs with per-module associations and state snapshots, plus screen, module and stage context for slow operations.
 - **安装包清理**：默认后台自动清理已安装或旧版本的缓存包与无任务使用的下载残余，扳手中可独立关闭或手动清理；保留待安装、较新版本、失败重试和自身更新核对所需文件。<br>
   **APK cleanup:** Automatically clear installed or older cached APKs and inactive download remnants by default; disable this separately or clean manually in Settings. Pending installs, newer versions, retry files and self-update verification files are retained.
-- **忽略更新与卸载**：在模块卡片的“更多”中永久忽略该模块更新，扳手设置可恢复；忽略项保留显示和主动单独更新，不参与更新计数、批量更新或后台提醒。卸载交由系统确认，返回后扫描实际安装状态。<br>
-  **Ignore updates and uninstall:** Permanently ignore a module through its card's More menu and restore it in Settings. Ignored modules remain visible and can be updated individually, while being excluded from counts, batch updates and reminders. Uninstallation uses system confirmation and rescans installed packages after return.
+- **忽略更新与卸载**：在模块卡片的“更多”中永久忽略该模块更新，扳手设置可恢复；忽略项保留显示和主动单独更新，不参与更新计数、批量更新或后台提醒。卸载交由系统确认，返回后核对目标包的实际安装状态。<br>
+  **Ignore updates and uninstall:** Permanently ignore a module through its card's More menu and restore it in Settings. Ignored modules remain visible and can be updated individually, while being excluded from counts, batch updates and reminders. Uninstallation uses system confirmation and checks the target package after return.
 
-- **后台更新与提醒**：默认每四小时处理模块、作用域和发现列表，有更新时通知；进入应用先显示可操作的缓存；已有待更新项时保留列表，无缓存或过期时按现有策略补全，普通返回前台不重复刷新。支持手动刷新和独立关闭，不自动下载或安装；系统可能延后任务，强行停止后需重新打开域见。<br>
-  **Background refresh and reminders:** Refresh module, scope and Discover lists every four hours by default and notify about updates. Open actionable cached lists immediately. Retain lists with pending updates and fill missing or expired caches under the existing refresh policy; ordinary resumes do not repeat refreshes. Refresh manually or disable background checks separately. No automatic downloads or installation; Android may delay jobs, and ScopeView must be reopened after force stop.
-- **配置备份**：在扳手中导出和导入用户设置、排序、收藏、忽略更新和自定义来源，包含有效默认值；不复制 Root、作用域、安装任务、APK 或目录缓存。<br>
-  **Configuration backup:** Export and import user settings, sort order, bookmarks, ignored modules and custom sources, including effective defaults. Root state, scopes, installation tasks, APKs and catalog caches are excluded.
-- **后台恢复**：可控制开机恢复与进程退出后的后台恢复，不自动弹出界面；系统限制及主动强行停止仍按 Android 行为处理。<br>
-  **Background recovery:** Control boot restoration and recovery after process exit without opening a screen; Android restrictions and user force-stop remain respected.
-- **Material 3 Expressive**：提供浅色和深色界面，保留固定标题栏与自然滚动；大列表分帧更新，重建界面后恢复滚动位置。<br>
-  **Material 3 Expressive:** Light and dark interfaces retain the fixed toolbar and natural scrolling. Large lists update across frames and restore their scroll position after recreation.
+- **后台更新与提醒**：默认每四小时处理模块、作用域和发现列表，有更新时通知；进入应用先显示可操作的缓存；已有待更新项时保留列表，无缓存或过期时按现有策略补全；返回前台只静默读取本地作用域，不因此重扫模块或联网刷新目录。支持手动刷新和独立关闭，不自动下载或安装；系统可能延后任务，强行停止后需重新打开域见。<br>
+  **Background refresh and reminders:** Refresh module, scope and Discover lists every four hours by default and notify about updates. Open actionable cached lists immediately. Retain lists with pending updates and fill missing or expired caches under the existing refresh policy. On resume, read local scopes quietly without triggering a module scan or network catalog refresh. Refresh manually or disable background checks separately. No automatic downloads or installation; Android may delay jobs, and ScopeView must be reopened after force stop.
+- **配置备份**：在扳手中导出和导入用户设置、外观、标签位置、排序、收藏、发现屏蔽、忽略更新和自定义来源，包含有效默认值；不复制 Root、作用域、安装任务、APK 或目录缓存。<br>
+  **Configuration backup:** Export and import user settings, appearance, tab position, sort order, bookmarks, blocked Discover modules, ignored modules and custom sources, including effective defaults. Root state, scopes, installation tasks, APKs and catalog caches are excluded.
+- **后台恢复**：可控制开机恢复与进程退出后的后台恢复，授权 Root 后提供一次性开机后备，不自动弹出界面；系统限制及主动强行停止仍按 Android 行为处理。<br>
+  **Background recovery:** Control boot restoration and recovery after process exit, with a one-shot Root boot fallback when authorized and no automatic screen launch; Android restrictions and user force-stop remain respected.
+- **Material 3 Expressive**：支持跟随系统、浅色、深色及系统动态配色；首页标签可置顶或置底并左右滑动，设置和详情保留固定工具栏，切页与旋转后恢复浏览位置。<br>
+  **Material 3 Expressive:** Choose system, light or dark themes and dynamic colors. Place home tabs at the top or bottom and swipe between them; Settings and details retain fixed toolbars, with browsing position restored across tabs and rotation.
 
 ## 使用要求 / Requirements
 
@@ -104,15 +104,15 @@ The Xposed entry only writes a framework log when ScopeView's main process loads
    Open ScopeView for one proactive Root request per launch while permission is missing, or retry with the explicit grant button. After authorization, read local scopes; Root can supplement module discovery for the current user when the ordinary app list is restricted.
 2. 在应用列表中搜索目标应用，查看关联模块。<br>
    Search for an app in the app list to see its associated modules.
-3. 进入应用先显示缓存；点击“刷新全部”统一扫描模块、读取作用域并检查更新，也可在“发现”中刷新目录。后台自动刷新默认开启，可在扳手中关闭。<br>
-   Open cached lists first. Refresh all scans modules, reads scopes and checks updates together; Discover can refresh its catalog separately. Background refresh is enabled by default and can be disabled in Settings.
+3. 进入应用先显示缓存；点击“刷新”统一扫描模块、读取作用域并检查更新，也可在“发现”中刷新目录。后台自动刷新默认开启，可在扳手中关闭。<br>
+   Open cached lists first. Refresh scans modules, reads scopes and checks updates together; Discover can refresh its catalog separately. Background refresh is enabled by default and can be disabled in Settings.
 4. 切换到模块更新列表，选择单个更新、勾选后“更新所选”或“更新全部”。<br>
    Switch to the module update list to update one module, use Update selected or Update all.
 5. 更新检查沿用管理器的来源和通道，兼容 Vector 的“仅正式版 / 包含预发布版”；联网失败时保留可用缓存。<br>
    Update checks follow the Manager’s source and channel, including Vector’s stable-only and prerelease-inclusive modes, and retain usable cached results when requests fail.
 
-6. 打开“发现”，按最近更新或新收录浏览；展开摘要，收藏感兴趣的模块，或进入详情查看 README、历史版本和下载链接。<br>
-   Open Discover to browse recent updates or new listings, expand previews, bookmark interesting modules or open details for the README, history and download links.
+6. 打开“发现”，按最近更新、新收录或未看浏览；展开摘要，收藏或屏蔽模块，进入详情查看 README、历史版本及安装附件。<br>
+   Open Discover to browse recent updates, new listings or unseen modules, expand previews, bookmark or block modules, and open details for the README, history and installable attachments.
 
 ## 使用说明 / Usage notes
 
@@ -130,6 +130,9 @@ Package names and versions are verified before installation, while Android retai
 
 Root 安装失败时，可将已验证的 APK 交给系统安装器。<br>
 If Root installation fails, the verified APK can be handed to the system installer.
+
+签名冲突可在明确确认数据丢失风险后卸载再安装；不自动卸载模块，已知多用户或系统包限制会在删除前提示。<br>
+For signature conflicts, confirm the data-loss risk before uninstalling and reinstalling. Modules are not uninstalled automatically, and known other-user or system-package restrictions are reported before removal.
 
 作用域记录保留 Android 用户 ID，应用名称和已安装状态按当前用户显示。<br>
 Scope records retain Android user IDs, while app names and installation status are resolved for the current user.
