@@ -44,10 +44,10 @@
   **Discover modules:** Browse All, Unseen and Saved with descriptions and release previews; search, choose a channel, hide installed or saved modules, sort by Stars, bookmark and mark unseen modules as seen.
 - **按需查看详情**：在卡片展开当前通道下载，另开详情查看 README、发布说明和历史版本；固定版本与下载入口便于跳过长文，APK 附件可在应用内下载、校验并通过 Root 或系统安装器安装。<br>
   **Details on demand:** Expand current-channel downloads in a card, or open details for the README, release notes and history. A fixed version and download shortcut bypasses long text; download and verify APK attachments in the app, then install with Root or the system installer.
-- **按应用查看模块**：「本地」查看已有配置；「仓库」列出当前用户已安装的应用，按作者声明的 scope 包名精确查找已安装和未安装模块，不根据名称或简介猜测适用关系。<br>
-  **Modules by app:** Local shows existing scope settings; Repo lists apps installed for the current user and finds installed or uninstalled modules by exact package names in authors’ declared scopes, without guessing from names or descriptions.
-- **查看模块更新**：跟随管理器选择的官方来源和通道，检查已安装模块详情并核对缓存；失败时保留已有结果，识别仅名称变化的更新。<br>
-  **Check module updates:** Follow the Manager’s official source and channel, check installed-module details and reconcile cached results; retain existing results on failure and recognize version-name-only updates.
+- **按应用查看模块**：「本地」查看设备上的作用域配置。「仓库」按应用包名合并仓库声明和已安装 APK 的推荐，标明来源，默认显示有匹配模块的应用。<br>
+  **Modules by app:** Local shows the scope settings on your device. Repo matches app package names against repository declarations and recommendations from installed APKs, labels each source and shows apps with matches by default.
+- **查看模块更新**：跟随管理器的来源和通道检查已安装模块。手动下拉执行完整检查，已核实的单项更新可提前操作。<br>
+  **Check module updates:** Check installed modules using the Manager’s source and channel. Pull down for a full check and act on individual updates as they are confirmed.
 - **通知快捷入口**：默认开启，点击通知打开域见；授权 Root 和通知权限后，划掉后台仍保留入口，设置中可关闭并保存选择。<br>
   **Notification shortcut:** Enabled by default; tap to open ScopeView. With Root and notification permission granted, it remains after removing the app from Recents; turn it off in Settings with your choice saved.
 - **优先显示更新**：有更新的模块始终排在前面，各组内保留你选择的排序规则。<br>
